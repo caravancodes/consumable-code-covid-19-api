@@ -1,6 +1,4 @@
-package com.frogobox.frogocovid19api
-
-import android.content.Context
+package com.frogobox.frogocovid19api.callback
 
 /**
  * Created by Faisal Amir
@@ -16,12 +14,21 @@ import android.content.Context
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- * com.frogobox.frogocovid19api
+ * com.frogobox.frogocovid19api.callback
  *
  */
-interface ConsumeCovid19ApiView {
+interface Covid19ResultCallback<T> {
 
-    // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(context: Context)
+    // Getting Data From API
+    fun getResultData(data: T)
+
+    // Failed Meesage
+    fun failedResult(statusCode: Int, errorMessage: String?)
+
+    // Show progress view
+    fun onShowProgress()
+
+    // Show progress view
+    fun onHideProgress()
 
 }

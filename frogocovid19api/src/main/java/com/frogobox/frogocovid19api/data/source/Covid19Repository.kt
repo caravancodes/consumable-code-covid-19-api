@@ -1,8 +1,6 @@
-package com.frogobox.frogocovid19api
+package com.frogobox.frogocovid19api.data.source
 
 import android.content.Context
-import com.frogobox.frogocovid19api.data.source.Covid19RemoteDataSource
-import com.frogobox.frogocovid19api.data.source.Covid19Repository
 
 /**
  * Created by Faisal Amir
@@ -18,14 +16,12 @@ import com.frogobox.frogocovid19api.data.source.Covid19Repository
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- * com.frogobox.frogocovid19api
+ * com.frogobox.frogocovid19api.data
  *
  */
-class ConsumeCovid19Api : ConsumeCovid19ApiView {
-
-    private val covid19Repository = Covid19Repository(Covid19RemoteDataSource)
+class Covid19Repository(private val remoteDataSource: Covid19RemoteDataSource) : Covid19DataSource {
 
     override fun usingChuckInterceptor(context: Context) {
-        covid19Repository.usingChuckInterceptor(context)
+        remoteDataSource.usingChuckInterceptor(context)
     }
 }

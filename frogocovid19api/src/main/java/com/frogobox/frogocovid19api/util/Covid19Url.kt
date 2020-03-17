@@ -1,6 +1,4 @@
-package com.frogobox.frogocovid19api
-
-import android.content.Context
+package com.frogobox.frogocovid19api.util
 
 /**
  * Created by Faisal Amir
@@ -16,12 +14,14 @@ import android.content.Context
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- * com.frogobox.frogocovid19api
+ * com.frogobox.frogocovid19api.util
  *
  */
-interface ConsumeCovid19ApiView {
+class Covid19Url {
 
-    // Switch For Using Chuck Interceptor
-    fun usingChuckInterceptor(context: Context)
+    companion object {
+        const val BASE_URL = ""
+    }
+
 
 }
