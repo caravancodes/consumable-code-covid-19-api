@@ -1,2 +1,3 @@
 rootProject.name='Covid19Api'
 include ':app'
+include ':frogocovid19api'
