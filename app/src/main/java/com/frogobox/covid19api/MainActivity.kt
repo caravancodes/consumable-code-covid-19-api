@@ -13,22 +13,22 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val consumeCovid19Api = ConsumeCovid19Api()
-        consumeCovid19Api.usingChuckInterceptor(this)
+        consumeCovid19Api.usingChuckInterceptor(this) // This is Code Chuck Interceptor
         consumeCovid19Api.getSummaryData(object : Covid19ResultCallback<ReponseSummary> {
             override fun getResultData(data: ReponseSummary) {
-                println(data.countries?.get(0)?.country)
+                // * PLACE YOUR CODE HERE FOR UI / ARRAYLIST *
             }
 
             override fun failedResult(statusCode: Int, errorMessage: String?) {
-
+                // failed result
             }
 
             override fun onShowProgress() {
-
+                // showing your progress view
             }
 
             override fun onHideProgress() {
-
+                // hiding your progress view
             }
         })
 

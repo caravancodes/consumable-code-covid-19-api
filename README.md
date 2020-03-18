@@ -1,6 +1,6 @@
 # consumable-code-covid-19-api By AmirIsBack
 - v1.0.0 - Development
-- Release soon
+- Stable Version
 
 # About This Project
 Eliminates the method of retrieving json data using retrofit repeatedly. so this project has a set of functions to retrieve data without the need for fetching data using the retrofit of the API
@@ -19,6 +19,57 @@ https://covid19api.com/
 
 # Function Main From This Project
 
+    // Switch For Using Chuck Interceptor
+    fun usingChuckInterceptor(context: Context)
+
+    // Get Summary Data
+    // Return new cases and total cases per country.
+    fun getSummaryData(callback: Covid19ResultCallback<ReponseSummary>)
+
+    // Get All Data
+    // This call returns ~8MB of data and currently takes around 5 seconds.
+    fun getAllData(callback: Covid19ResultCallback<List<Status>>)
+
+    // Get All Countries
+    // List all countries and their provinces.
+    fun getAllCountries(callback: Covid19ResultCallback<List<Country>>)
+
+    // Get Status By Country
+    // {country} must be the country_slug the API call above
+    // {status} must be one of: confirmed, deaths, recovered
+    fun getStatusByCountry(
+        country: String,
+        status: String,
+        callback: Covid19ResultCallback<List<Status>>
+    )
+
+    // Get Status By Country And Province
+    // {country} must be the country_slug the API call above
+    // {status} must be one of: confirmed, deaths, recovered
+    fun getStatusByCountryProvince(
+        country: String,
+        status: String,
+        callback: Covid19ResultCallback<List<Status>>
+    )
+
+    // Get Status By Country From First Recorded Case
+    // {country} must be the country_slug the API call above
+    // {status} must be one of: confirmed, deaths, recovered
+    fun getFirstRecordedByCountry(
+        country: String,
+        status: String,
+        callback: Covid19ResultCallback<List<Status>>
+    )
+
+    // Get Status By Country And Province From First Recorded Case
+    // {country} must be the country_slug the API call above
+    // {status} must be one of: confirmed, deaths, recovered
+    fun getFirstRecordedByCountryProvince(
+        country: String,
+        status: String,
+        callback: Covid19ResultCallback<List<Status>>
+    )
+
 # Android Library Version (build.gradle)
 - ext.kotlin_version = '1.3.70'
 - classpath 'com.android.tools.build:gradle:3.6.1'
@@ -29,13 +80,54 @@ https://covid19api.com/
 # Version Release
 This Is Latest Release
 
-    $version_release = Release Soon
+    $version_release = 1.0.0
 
 What's New??
 
-    * Development Mode *
+    * Consumable Code Covid 19 API*
 
 # How To Use This Project
+<h3>Step 1. Add the JitPack repository to your build file</h3>
+
+Add it in your root build.gradle at the end of repositories:
+
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+  
+  
+<h3>Step 2. Add the dependency</h3>
+
+	dependencies {
+	        // library consumable code covid 19 api
+            implementation 'com.github.amirisback:consumable-code-covid-19-api:$version_release'
+	}
+	
+<h3>Step 3. Declaration ConsumeTheSportDbApi</h3>
+
+	val consumeCovid19Api = ConsumeCovid19Api()
+    consumeCovid19Api.usingChuckInterceptor(this) // This is Code Chuck Interceptor
+    consumeCovid19Api.getSummaryData(object : Covid19ResultCallback<ReponseSummary> {
+        override fun getResultData(data: ReponseSummary) {
+            // * PLACE YOUR CODE HERE FOR UI / ARRAYLIST *
+        }
+
+        override fun failedResult(statusCode: Int, errorMessage: String?) {
+            // failed result
+        }
+
+        override fun onShowProgress() {
+            // showing your progress view
+        }
+
+        override fun onHideProgress() {
+            // hiding your progress view
+        }
+    })
+            
 
 
 # Colaborator
