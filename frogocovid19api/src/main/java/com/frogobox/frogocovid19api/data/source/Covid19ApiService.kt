@@ -1,13 +1,18 @@
 package com.frogobox.frogocovid19api.data.source
 
 import android.content.Context
+import com.frogobox.frogocovid19api.data.model.Country
+import com.frogobox.frogocovid19api.data.model.Status
+import com.frogobox.frogocovid19api.data.reponse.ReponseSummary
 import com.frogobox.frogocovid19api.util.Covid19Url
 import com.readystatesoftware.chuck.ChuckInterceptor
+import io.reactivex.Observable
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.GET
 import java.util.concurrent.TimeUnit
 
 /**
@@ -28,6 +33,58 @@ import java.util.concurrent.TimeUnit
  *
  */
 interface Covid19ApiService {
+
+
+    // Get Summary Data
+    // Return new cases and total cases per country.
+    @GET(Covid19Url.URL_SUMMARY)
+    fun getSummaryData(): Observable<ReponseSummary>
+
+    // Get All Data
+    // This call returns ~8MB of data and currently takes around 5 seconds.
+    @GET(Covid19Url.URL_ALL)
+    fun getAllData(): Observable<List<Status>>
+
+    // Get All Countries
+    // List all countries and their provinces.
+    @GET(Covid19Url.URL_COUNTRIES)
+    fun getAllCountries(): Observable<List<Country>>
+
+    // Get Status By Country
+    // {country} must be the country_slug the API call above
+    // {status} must be one of: confirmed, deaths, recovered
+    @GET(Covid19Url.URL_STATUS_TOTAL)
+    fun getStatusByCountry(
+        country: String,
+        status: String
+    ): Observable<List<Status>>
+
+    // Get Status By Country And Province
+    // {country} must be the country_slug the API call above
+    // {status} must be one of: confirmed, deaths, recovered
+    @GET(Covid19Url.URL_STATUS)
+    fun getStatusByCountryProvince(
+        country: String,
+        status: String
+    ): Observable<List<Status>>
+
+    // Get Status By Country From First Recorded Case
+    // {country} must be the country_slug the API call above
+    // {status} must be one of: confirmed, deaths, recovered
+    @GET(Covid19Url.URL_DAYONE_TOTAL)
+    fun getFirstRecordedByCountry(
+        country: String,
+        status: String
+    ): Observable<List<Status>>
+
+    // Get Status By Country And Province From First Recorded Case
+    // {country} must be the country_slug the API call above
+    // {status} must be one of: confirmed, deaths, recovered
+    @GET(Covid19Url.URL_DAYONE)
+    fun getFirstRecordedByCountryProvince(
+        country: String,
+        status: String
+    ): Observable<List<Status>>
 
     companion object Factory {
 

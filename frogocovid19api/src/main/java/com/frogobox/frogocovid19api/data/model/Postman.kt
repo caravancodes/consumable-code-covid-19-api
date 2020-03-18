@@ -19,7 +19,7 @@ import com.google.gson.annotations.SerializedName
  * com.frogobox.frogocovid19api.data.model
  *
  */
-data class Data(
+data class Postman(
 
     @SerializedName("Name")
     var name : String? = null,

@@ -76,7 +76,6 @@ interface Covid19DataSource {
         callback: GetRemoteCallback<List<Status>>
     )
 
-
     // Response Callback
     interface GetRemoteCallback<T> : BaseCovid19DataSource.ResponseCallback<T>
 
