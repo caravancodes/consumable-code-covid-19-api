@@ -1,11 +1,14 @@
-package com.frogobox.frogocovid19api.util
+package com.frogobox.frogocovid19api.data.reponse
+
+import com.frogobox.frogocovid19api.data.model.Country
+import com.google.gson.annotations.SerializedName
 
 /**
  * Created by Faisal Amir
  * FrogoBox Inc License
  * =========================================
  * Covid19Api
- * Copyright (C) 17/03/2020.
+ * Copyright (C) 18/03/2020.
  * All rights reserved
  * -----------------------------------------
  * Name     : Muhammad Faisal Amir
@@ -14,20 +17,12 @@ package com.frogobox.frogocovid19api.util
  * LinkedIn : linkedin.com/in/faisalamircs
  * -----------------------------------------
  * FrogoBox Software Industries
- * com.frogobox.frogocovid19api.util
+ * com.frogobox.frogocovid19api.data.reponse
  *
  */
-class Covid19Constant {
+data class Countries(
 
-    companion object {
+    @SerializedName("Countries")
+    var countries: List<Country>? = null
 
-        const val PATH_COUNTRY = "country"
-        const val PATH_STATUS = "status"
-
-        const val VALUE_STATUS_CONFIRMED = "confirmed"
-        const val VALUE_STATUS_DEATHS = "deaths"
-        const val VALUE_STATUS_RECOVERED = "recovered"
-
-    }
-
-}
+)
