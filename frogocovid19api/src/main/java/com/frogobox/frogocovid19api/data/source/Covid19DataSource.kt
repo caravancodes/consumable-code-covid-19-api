@@ -79,5 +79,4 @@ interface Covid19DataSource {
     // Response Callback
     interface GetRemoteCallback<T> : BaseCovid19DataSource.ResponseCallback<T>
 
-
 }
