@@ -110,7 +110,7 @@ Add it in your root build.gradle at the end of repositories:
             implementation 'com.github.amirisback:consumable-code-covid-19-api:$version_release'
 	}
 	
-<h3>Step 3. Declaration ConsumeTheSportDbApi</h3>
+<h3>Step 3. Declaration ConsumeCovid19Api</h3>
 
 	val consumeCovid19Api = ConsumeCovid19Api()
     consumeCovid19Api.usingChuckInterceptor(this) // This is Code Chuck Interceptor
