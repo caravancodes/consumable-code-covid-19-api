@@ -4,6 +4,7 @@ import android.content.Context
 import com.frogobox.frogocovid19api.data.model.Country
 import com.frogobox.frogocovid19api.data.model.Status
 import com.frogobox.frogocovid19api.data.reponse.ReponseSummary
+import com.frogobox.frogocovid19api.util.Covid19Constant
 import com.frogobox.frogocovid19api.util.Covid19Url
 import com.readystatesoftware.chuck.ChuckInterceptor
 import io.reactivex.Observable
@@ -13,6 +14,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 import java.util.concurrent.TimeUnit
 
 /**
@@ -33,8 +35,7 @@ import java.util.concurrent.TimeUnit
  *
  */
 interface Covid19ApiService {
-
-
+    
     // Get Summary Data
     // Return new cases and total cases per country.
     @GET(Covid19Url.URL_SUMMARY)
@@ -55,8 +56,8 @@ interface Covid19ApiService {
     // {status} must be one of: confirmed, deaths, recovered
     @GET(Covid19Url.URL_STATUS_TOTAL)
     fun getStatusByCountry(
-        country: String,
-        status: String
+        @Path(Covid19Constant.PATH_COUNTRY) country: String,
+        @Path(Covid19Constant.PATH_STATUS) status: String
     ): Observable<List<Status>>
 
     // Get Status By Country And Province
@@ -64,8 +65,8 @@ interface Covid19ApiService {
     // {status} must be one of: confirmed, deaths, recovered
     @GET(Covid19Url.URL_STATUS)
     fun getStatusByCountryProvince(
-        country: String,
-        status: String
+        @Path(Covid19Constant.PATH_COUNTRY) country: String,
+        @Path(Covid19Constant.PATH_STATUS) status: String
     ): Observable<List<Status>>
 
     // Get Status By Country From First Recorded Case
@@ -73,8 +74,8 @@ interface Covid19ApiService {
     // {status} must be one of: confirmed, deaths, recovered
     @GET(Covid19Url.URL_DAYONE_TOTAL)
     fun getFirstRecordedByCountry(
-        country: String,
-        status: String
+        @Path(Covid19Constant.PATH_COUNTRY) country: String,
+        @Path(Covid19Constant.PATH_STATUS) status: String
     ): Observable<List<Status>>
 
     // Get Status By Country And Province From First Recorded Case
@@ -82,8 +83,8 @@ interface Covid19ApiService {
     // {status} must be one of: confirmed, deaths, recovered
     @GET(Covid19Url.URL_DAYONE)
     fun getFirstRecordedByCountryProvince(
-        country: String,
-        status: String
+        @Path(Covid19Constant.PATH_COUNTRY) country: String,
+        @Path(Covid19Constant.PATH_STATUS) status: String
     ): Observable<List<Status>>
 
     companion object Factory {

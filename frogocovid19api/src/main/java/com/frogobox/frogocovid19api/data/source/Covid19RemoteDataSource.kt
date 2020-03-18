@@ -4,6 +4,8 @@ import android.content.Context
 import com.frogobox.frogocovid19api.data.model.Country
 import com.frogobox.frogocovid19api.data.model.Status
 import com.frogobox.frogocovid19api.data.reponse.ReponseSummary
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 
 /**
  * Created by Faisal Amir
@@ -31,15 +33,60 @@ object Covid19RemoteDataSource : Covid19DataSource {
     }
 
     override fun getSummaryData(callback: Covid19DataSource.GetRemoteCallback<ReponseSummary>) {
-        TODO("Not yet implemented")
+        apiService.getApiService
+            .getSummaryData()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { callback.onShowProgress() }
+            .doOnTerminate { callback.onHideProgress() }
+            .subscribe(object : Covid19ApiCallback<ReponseSummary>() {
+                override fun onSuccess(model: ReponseSummary) {
+                    callback.onSuccess(model)
+                }
+
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
+                }
+
+                override fun onFinish() {}
+            })
     }
 
     override fun getAllData(callback: Covid19DataSource.GetRemoteCallback<List<Status>>) {
-        TODO("Not yet implemented")
+        apiService.getApiService.getAllData()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { callback.onShowProgress() }
+            .doOnTerminate { callback.onHideProgress() }
+            .subscribe(object : Covid19ApiCallback<List<Status>>() {
+                override fun onSuccess(model: List<Status>) {
+                    callback.onSuccess(model)
+                }
+
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
+                }
+
+                override fun onFinish() {}
+            })
     }
 
     override fun getAllCountries(callback: Covid19DataSource.GetRemoteCallback<List<Country>>) {
-        TODO("Not yet implemented")
+        apiService.getApiService.getAllCountries()
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { callback.onShowProgress() }
+            .doOnTerminate { callback.onHideProgress() }
+            .subscribe(object : Covid19ApiCallback<List<Country>>() {
+                override fun onSuccess(model: List<Country>) {
+                    callback.onSuccess(model)
+                }
+
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
+                }
+
+                override fun onFinish() {}
+            })
     }
 
     override fun getStatusByCountry(
@@ -47,7 +94,21 @@ object Covid19RemoteDataSource : Covid19DataSource {
         status: String,
         callback: Covid19DataSource.GetRemoteCallback<List<Status>>
     ) {
-        TODO("Not yet implemented")
+        apiService.getApiService.getStatusByCountry(country, status)
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { callback.onShowProgress() }
+            .doOnTerminate { callback.onHideProgress() }
+            .subscribe(object : Covid19ApiCallback<List<Status>>() {
+                override fun onSuccess(model: List<Status>) {
+                    callback.onSuccess(model)
+                }
+
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
+                }
+
+                override fun onFinish() {}
+            })
     }
 
     override fun getStatusByCountryProvince(
@@ -55,7 +116,22 @@ object Covid19RemoteDataSource : Covid19DataSource {
         status: String,
         callback: Covid19DataSource.GetRemoteCallback<List<Status>>
     ) {
-        TODO("Not yet implemented")
+        apiService.getApiService.getStatusByCountryProvince(country, status)
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { callback.onShowProgress() }
+            .doOnTerminate { callback.onHideProgress() }
+            .subscribe(object : Covid19ApiCallback<List<Status>>() {
+                override fun onSuccess(model: List<Status>) {
+                    callback.onSuccess(model)
+                }
+
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
+                }
+
+                override fun onFinish() {}
+            })
+
     }
 
     override fun getFirstRecordedByCountry(
@@ -63,7 +139,21 @@ object Covid19RemoteDataSource : Covid19DataSource {
         status: String,
         callback: Covid19DataSource.GetRemoteCallback<List<Status>>
     ) {
-        TODO("Not yet implemented")
+        apiService.getApiService.getFirstRecordedByCountry(country, status)
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { callback.onShowProgress() }
+            .doOnTerminate { callback.onHideProgress() }
+            .subscribe(object : Covid19ApiCallback<List<Status>>() {
+                override fun onSuccess(model: List<Status>) {
+                    callback.onSuccess(model)
+                }
+
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
+                }
+
+                override fun onFinish() {}
+            })
     }
 
     override fun getFirstRecordedByCountryProvince(
@@ -71,6 +161,20 @@ object Covid19RemoteDataSource : Covid19DataSource {
         status: String,
         callback: Covid19DataSource.GetRemoteCallback<List<Status>>
     ) {
-        TODO("Not yet implemented")
+        apiService.getApiService.getFirstRecordedByCountryProvince(country, status)
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { callback.onShowProgress() }
+            .doOnTerminate { callback.onHideProgress() }
+            .subscribe(object : Covid19ApiCallback<List<Status>>() {
+                override fun onSuccess(model: List<Status>) {
+                    callback.onSuccess(model)
+                }
+
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
+                }
+
+                override fun onFinish() {}
+            })
     }
 }
