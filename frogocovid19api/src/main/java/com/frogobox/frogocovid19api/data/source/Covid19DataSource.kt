@@ -3,6 +3,7 @@ package com.frogobox.frogocovid19api.data.source
 import android.content.Context
 import com.frogobox.frogocovid19api.base.BaseCovid19DataSource
 import com.frogobox.frogocovid19api.data.model.Country
+import com.frogobox.frogocovid19api.data.model.Route
 import com.frogobox.frogocovid19api.data.model.Status
 import com.frogobox.frogocovid19api.data.reponse.ReponseSummary
 
@@ -27,6 +28,10 @@ interface Covid19DataSource {
 
     // Switch For Using Chuck Interceptor
     fun usingChuckInterceptor(context: Context)
+
+    // List Routes
+    // List all routes with parameters and descriptions.
+    fun getRoutes(callback: GetRemoteCallback<List<Route>>)
 
     // Get Summary Data
     // Return new cases and total cases per country.

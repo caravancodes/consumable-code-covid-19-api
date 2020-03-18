@@ -2,6 +2,7 @@ package com.frogobox.frogocovid19api.data.source
 
 import android.content.Context
 import com.frogobox.frogocovid19api.data.model.Country
+import com.frogobox.frogocovid19api.data.model.Route
 import com.frogobox.frogocovid19api.data.model.Status
 import com.frogobox.frogocovid19api.data.reponse.ReponseSummary
 import com.frogobox.frogocovid19api.util.Covid19Constant
@@ -35,7 +36,12 @@ import java.util.concurrent.TimeUnit
  *
  */
 interface Covid19ApiService {
-    
+
+    // List Routes
+    // List all routes with parameters and descriptions.
+    @GET(Covid19Url.URL_ROUTE)
+    fun getRoutes(): Observable<List<Route>>
+
     // Get Summary Data
     // Return new cases and total cases per country.
     @GET(Covid19Url.URL_SUMMARY)

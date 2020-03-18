@@ -2,6 +2,7 @@ package com.frogobox.frogocovid19api.data.source
 
 import android.content.Context
 import com.frogobox.frogocovid19api.data.model.Country
+import com.frogobox.frogocovid19api.data.model.Route
 import com.frogobox.frogocovid19api.data.model.Status
 import com.frogobox.frogocovid19api.data.reponse.ReponseSummary
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -30,6 +31,25 @@ object Covid19RemoteDataSource : Covid19DataSource {
 
     override fun usingChuckInterceptor(context: Context) {
         apiService.usingChuckInterceptor(context)
+    }
+
+    override fun getRoutes(callback: Covid19DataSource.GetRemoteCallback<List<Route>>) {
+        apiService.getApiService.getRoutes()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { callback.onShowProgress() }
+            .doOnTerminate { callback.onHideProgress() }
+            .subscribe(object : Covid19ApiCallback<List<Route>>() {
+                override fun onSuccess(model: List<Route>) {
+                    callback.onSuccess(model)
+                }
+
+                override fun onFailure(code: Int, errorMessage: String) {
+                    callback.onFailed(code, errorMessage)
+                }
+
+                override fun onFinish() {}
+            })
     }
 
     override fun getSummaryData(callback: Covid19DataSource.GetRemoteCallback<ReponseSummary>) {

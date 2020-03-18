@@ -1,5 +1,5 @@
 # consumable-code-covid-19-api By AmirIsBack
-- v1.0.0 - Development
+- v1.0.1 - Development
 - Stable Version
 
 # About This Project
@@ -21,6 +21,10 @@ https://covid19api.com/
 
     // Switch For Using Chuck Interceptor
     fun usingChuckInterceptor(context: Context)
+
+    // List Routes
+    // List all routes with parameters and descriptions.
+    fun getRoutes(callback: Covid19ResultCallback<List<Route>>)
 
     // Get Summary Data
     // Return new cases and total cases per country.
@@ -80,11 +84,11 @@ https://covid19api.com/
 # Version Release
 This Is Latest Release
 
-    $version_release = 1.0.0
+    $version_release = 1.0.1
 
 What's New??
 
-    * Consumable Code Covid 19 API*
+    * Adding Get Routes *
 
 # How To Use This Project
 <h3>Step 1. Add the JitPack repository to your build file</h3>

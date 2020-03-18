@@ -22,6 +22,10 @@ class Covid19Url {
     companion object {
         const val BASE_URL = "https://api.covid19api.com/"
 
+        // List Routes
+        // List all routes with parameters and descriptions.
+        const val URL_ROUTE = ""
+
         // Get Summary Data
         // Return new cases and total cases per country.
         const val URL_SUMMARY = "summary"

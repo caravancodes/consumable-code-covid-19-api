@@ -2,6 +2,7 @@ package com.frogobox.frogocovid19api.data.source
 
 import android.content.Context
 import com.frogobox.frogocovid19api.data.model.Country
+import com.frogobox.frogocovid19api.data.model.Route
 import com.frogobox.frogocovid19api.data.model.Status
 import com.frogobox.frogocovid19api.data.reponse.ReponseSummary
 
@@ -26,6 +27,10 @@ class Covid19Repository(private val remoteDataSource: Covid19RemoteDataSource) :
 
     override fun usingChuckInterceptor(context: Context) {
         remoteDataSource.usingChuckInterceptor(context)
+    }
+
+    override fun getRoutes(callback: Covid19DataSource.GetRemoteCallback<List<Route>>) {
+        remoteDataSource.getRoutes(callback)
     }
 
     override fun getSummaryData(callback: Covid19DataSource.GetRemoteCallback<ReponseSummary>) {

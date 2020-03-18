@@ -3,6 +3,7 @@ package com.frogobox.frogocovid19api
 import android.content.Context
 import com.frogobox.frogocovid19api.callback.Covid19ResultCallback
 import com.frogobox.frogocovid19api.data.model.Country
+import com.frogobox.frogocovid19api.data.model.Route
 import com.frogobox.frogocovid19api.data.model.Status
 import com.frogobox.frogocovid19api.data.reponse.ReponseSummary
 import com.frogobox.frogocovid19api.data.source.Covid19DataSource
@@ -32,6 +33,27 @@ class ConsumeCovid19Api : ConsumeCovid19ApiView {
 
     override fun usingChuckInterceptor(context: Context) {
         covid19Repository.usingChuckInterceptor(context)
+    }
+
+    override fun getRoutes(callback: Covid19ResultCallback<List<Route>>) {
+        covid19Repository.getRoutes(object :
+            Covid19DataSource.GetRemoteCallback<List<Route>> {
+            override fun onSuccess(data: List<Route>) {
+                callback.getResultData(data)
+            }
+
+            override fun onFailed(statusCode: Int, errorMessage: String?) {
+                callback.failedResult(statusCode, errorMessage)
+            }
+
+            override fun onShowProgress() {
+                callback.onShowProgress()
+            }
+
+            override fun onHideProgress() {
+                callback.onHideProgress()
+            }
+        })
     }
 
     override fun getSummaryData(callback: Covid19ResultCallback<ReponseSummary>) {
