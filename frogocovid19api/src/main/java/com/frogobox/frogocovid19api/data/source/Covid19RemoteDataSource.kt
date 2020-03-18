@@ -1,6 +1,9 @@
 package com.frogobox.frogocovid19api.data.source
 
 import android.content.Context
+import com.frogobox.frogocovid19api.data.model.Country
+import com.frogobox.frogocovid19api.data.model.Status
+import com.frogobox.frogocovid19api.data.reponse.ReponseSummary
 
 /**
  * Created by Faisal Amir
@@ -27,4 +30,47 @@ object Covid19RemoteDataSource : Covid19DataSource {
         apiService.usingChuckInterceptor(context)
     }
 
+    override fun getSummaryData(callback: Covid19DataSource.GetRemoteCallback<ReponseSummary>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getAllData(callback: Covid19DataSource.GetRemoteCallback<List<Status>>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getAllCountries(callback: Covid19DataSource.GetRemoteCallback<List<Country>>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getStatusByCountry(
+        country: String,
+        status: String,
+        callback: Covid19DataSource.GetRemoteCallback<List<Status>>
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getStatusByCountryProvince(
+        country: String,
+        status: String,
+        callback: Covid19DataSource.GetRemoteCallback<List<Status>>
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getFirstRecordedByCountry(
+        country: String,
+        status: String,
+        callback: Covid19DataSource.GetRemoteCallback<List<Status>>
+    ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getFirstRecordedByCountryProvince(
+        country: String,
+        status: String,
+        callback: Covid19DataSource.GetRemoteCallback<List<Status>>
+    ) {
+        TODO("Not yet implemented")
+    }
 }
