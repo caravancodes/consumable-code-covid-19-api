@@ -1,5 +1,6 @@
 package com.frogobox.frogocovid19api.data.reponse
 
+import com.frogobox.frogocovid19api.data.model.Global
 import com.frogobox.frogocovid19api.data.model.Summary
 import com.google.gson.annotations.SerializedName
 
@@ -22,7 +23,14 @@ import com.google.gson.annotations.SerializedName
  */
 data class ReponseSummary(
 
+
+    @SerializedName("Global")
+    var global: List<Global>? = null,
+
     @SerializedName("Countries")
-    var countries: List<Summary>? = null
+    var countries: List<Summary>? = null,
+
+    @SerializedName("Date")
+    var date: String? = null
 
 )

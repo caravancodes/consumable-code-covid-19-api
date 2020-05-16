@@ -24,6 +24,9 @@ data class Summary(
     @SerializedName("Country")
     var country: String? = null,
 
+    @SerializedName("CountryCode")
+    var countryCode: String? = null,
+
     @SerializedName("NewConfirmed")
     var newConfirmed: Int? = null,
 
