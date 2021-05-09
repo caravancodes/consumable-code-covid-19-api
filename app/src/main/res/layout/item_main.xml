@@ -17,23 +17,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/frogo_rv_dimen_16dp"
-    android:layout_marginEnd="@dimen/frogo_rv_dimen_16dp"
-    android:layout_marginBottom="@dimen/frogo_rv_dimen_16dp"
-    android:background="@drawable/frogo_rv_bg_card_16dp"
-    android:elevation="@dimen/frogo_rv_dimen_2dp"
+    android:layout_marginStart="@dimen/frogo_dimen_16dp"
+    android:layout_marginEnd="@dimen/frogo_dimen_16dp"
+    android:layout_marginBottom="@dimen/frogo_dimen_16dp"
+    android:background="@drawable/frogo_bg_card_16dp"
+    android:elevation="@dimen/frogo_dimen_2dp"
     android:orientation="vertical"
-    android:padding="@dimen/frogo_rv_dimen_16dp">
+    android:padding="@dimen/frogo_dimen_16dp">
 
     <TextView
         android:id="@+id/tvCountry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/frogoRvColorBlack"
-        android:textSize="@dimen/frogo_rv_dimen_18sp"
+        android:textColor="@color/frogoColorBlack"
+        android:textSize="@dimen/frogo_dimen_font_18sp"
         android:textStyle="bold"
         tools:text="@string/app_name"
-        android:layout_marginBottom="@dimen/frogo_rv_dimen_8dp"/>
+        android:layout_marginBottom="@dimen/frogo_dimen_8dp"/>
 
     <LinearLayout
         android:gravity="center_vertical"
@@ -43,9 +43,9 @@
 
         <ImageView
             android:id="@+id/ivFlag"
-            android:layout_marginEnd="@dimen/frogo_rv_dimen_16dp"
-            android:layout_width="@dimen/frogo_rv_dimen_100dp"
-            android:layout_height="@dimen/frogo_rv_dimen_64dp" />
+            android:layout_marginEnd="@dimen/frogo_dimen_16dp"
+            android:layout_width="@dimen/frogo_dimen_100dp"
+            android:layout_height="@dimen/frogo_dimen_64dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"

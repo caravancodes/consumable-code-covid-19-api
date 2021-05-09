@@ -1,22 +1,26 @@
 package com.frogobox.covid19api
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.frogobox.covid19api.databinding.ActivityMainBinding
 import com.frogobox.frogocovid19api.ConsumeCovid19Api
 import com.frogobox.frogocovid19api.callback.Covid19ResultCallback
 import com.frogobox.frogocovid19api.data.model.Summary
 import com.frogobox.frogocovid19api.data.reponse.ReponseSummary
-import com.frogobox.recycler.boilerplate.viewrclass.FrogoViewAdapterCallback
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.item_main.view.*
+import com.frogobox.recycler.core.IFrogoViewAdapter
 
-class MainActivity : AppCompatActivity(), FrogoViewAdapterCallback<Summary> {
+class MainActivity : AppCompatActivity(), IFrogoViewAdapter<Summary> {
+
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
+        setContentView(binding.root)
         setupConsumableApi()
     }
 
@@ -40,21 +44,21 @@ class MainActivity : AppCompatActivity(), FrogoViewAdapterCallback<Summary> {
             override fun onShowProgress() {
                 // showing your progress view
                 runOnUiThread {
-                    progress_view.visibility = View.VISIBLE
+                    binding.progressView.visibility = View.VISIBLE
                 }
             }
 
             override fun onHideProgress() {
                 // hiding your progress view
                 runOnUiThread {
-                    progress_view.visibility = View.GONE
+                    binding.progressView.visibility = View.GONE
                 }
             }
         })
     }
 
     private fun setupFrogoRecyclerView(data: List<Summary>) {
-        frogo_rv.injector<Summary>()
+        binding.frogoRv.injector<Summary>()
             .addData(data)
             .addCustomView(R.layout.item_main)
             .addEmptyView(null)
@@ -76,12 +80,12 @@ class MainActivity : AppCompatActivity(), FrogoViewAdapterCallback<Summary> {
 
     override fun setupInitComponent(view: View, data: Summary) {
 
-        view.tvCountry.text = data.country
-        view.tvConfirmed.text = data.totalConfirmed.toString()
-        view.tvDeath.text = data.totalDeaths.toString()
-        view.tvRecovered.text = data.totalRecovered.toString()
+        view.findViewById<TextView>(R.id.tvCountry).text = data.country
+        view.findViewById<TextView>(R.id.tvConfirmed).text = data.totalConfirmed.toString()
+        view.findViewById<TextView>(R.id.tvDeath).text = data.totalDeaths.toString()
+        view.findViewById<TextView>(R.id.tvRecovered).text = data.totalRecovered.toString()
 
-        Glide.with(view.context).load(data.countryCode?.let { countryFlagUrl(it) }).into(view.ivFlag)
+        Glide.with(view.context).load(data.countryCode?.let { countryFlagUrl(it) }).into(view.findViewById(R.id.ivFlag))
 
     }
 

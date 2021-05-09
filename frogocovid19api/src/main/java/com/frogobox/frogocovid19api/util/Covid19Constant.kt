@@ -17,17 +17,13 @@ package com.frogobox.frogocovid19api.util
  * com.frogobox.frogocovid19api.util
  *
  */
-class Covid19Constant {
+object Covid19Constant {
 
-    companion object {
+    const val PATH_COUNTRY = "country"
+    const val PATH_STATUS = "status"
 
-        const val PATH_COUNTRY = "country"
-        const val PATH_STATUS = "status"
-
-        const val VALUE_STATUS_CONFIRMED = "confirmed"
-        const val VALUE_STATUS_DEATHS = "deaths"
-        const val VALUE_STATUS_RECOVERED = "recovered"
-
-    }
+    const val VALUE_STATUS_CONFIRMED = "confirmed"
+    const val VALUE_STATUS_DEATHS = "deaths"
+    const val VALUE_STATUS_RECOVERED = "recovered"
 
 }

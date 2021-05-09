@@ -17,48 +17,45 @@ package com.frogobox.frogocovid19api.util
  * com.frogobox.frogocovid19api.util
  *
  */
-class Covid19Url {
+object Covid19Url {
 
-    companion object {
-        const val BASE_URL = "https://api.covid19api.com/"
+    const val BASE_URL = "https://api.covid19api.com/"
 
-        // List Routes
-        // List all routes with parameters and descriptions.
-        const val URL_ROUTE = ""
+    // List Routes
+    // List all routes with parameters and descriptions.
+    const val URL_ROUTE = ""
 
-        // Get Summary Data
-        // Return new cases and total cases per country.
-        const val URL_SUMMARY = "summary"
+    // Get Summary Data
+    // Return new cases and total cases per country.
+    const val URL_SUMMARY = "summary"
 
-        // Get All Data
-        // This call returns ~8MB of data and currently takes around 5 seconds.
-        const val URL_ALL = "all"
+    // Get All Data
+    // This call returns ~8MB of data and currently takes around 5 seconds.
+    const val URL_ALL = "all"
 
-        // Get All Countries
-        // List all countries and their provinces.
-        const val URL_COUNTRIES = "countries"
+    // Get All Countries
+    // List all countries and their provinces.
+    const val URL_COUNTRIES = "countries"
 
-        // Get Status By Country
-        // {country} must be the country_slug the API call above
-        // {status} must be one of: confirmed, deaths, recovered
-        const val URL_STATUS_TOTAL = "total/country/{country}/status/{status}"
+    // Get Status By Country
+    // {country} must be the country_slug the API call above
+    // {status} must be one of: confirmed, deaths, recovered
+    const val URL_STATUS_TOTAL = "total/country/{country}/status/{status}"
 
-        // Get Status By Country And Province
-        // {country} must be the country_slug the API call above
-        // {status} must be one of: confirmed, deaths, recovered
-        const val URL_STATUS = "country/{country}/status/{status}"
+    // Get Status By Country And Province
+    // {country} must be the country_slug the API call above
+    // {status} must be one of: confirmed, deaths, recovered
+    const val URL_STATUS = "country/{country}/status/{status}"
 
-        // Get Status By Country From First Recorded Case
-        // {country} must be the country_slug the API call above
-        // {status} must be one of: confirmed, deaths, recovered
-        const val URL_DAYONE_TOTAL = "total/dayone/country/{country}/status/{status}"
+    // Get Status By Country From First Recorded Case
+    // {country} must be the country_slug the API call above
+    // {status} must be one of: confirmed, deaths, recovered
+    const val URL_DAYONE_TOTAL = "total/dayone/country/{country}/status/{status}"
 
-        // Get Status By Country And Province From First Recorded Case
-        // {country} must be the country_slug the API call above
-        // {status} must be one of: confirmed, deaths, recovered
-        const val URL_DAYONE = "dayone/country/{country}/status/{status}"
-
-    }
+    // Get Status By Country And Province From First Recorded Case
+    // {country} must be the country_slug the API call above
+    // {status} must be one of: confirmed, deaths, recovered
+    const val URL_DAYONE = "dayone/country/{country}/status/{status}"
 
 
 }
