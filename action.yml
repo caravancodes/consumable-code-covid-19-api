@@ -1,0 +1,16 @@
+name: 'consumable-code-covid-19-api'
+description: 'consumable-code-covid-19-api for your android apps'
+author: 'Muhammad Faisal Amir'
+branding:
+  icon: archive
+  color: green
+inputs:
+  myInput:
+    description: 'Input to use'
+    required: false
+    default: 'world'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.myInput }}
